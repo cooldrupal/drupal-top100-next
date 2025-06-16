@@ -80,7 +80,12 @@ export default async function NodePage(props: NodePageProps) {
 
   const blocks = await getBlocks(slug, ['sidebar', 'header', 'footer_top'])
   const menu = await getBlocks('/', ['primary_menu'], ['system'])
-  const breadcrumb = await getBreadcrumb(slug, 'page_header')
+
+  type BreadcrumbItem = { text: string; url: string };
+  const breadcrumb = (await getBreadcrumb(slug, 'page_header')) as BreadcrumbItem[] | undefined;
+  if (breadcrumb) {
+    breadcrumb.push({ text: node.title, url: '' });
+  }
 
   return (
     <>
