@@ -1,20 +1,10 @@
 import { blocksMap } from "@/params/blocks"
 import { Link } from "@/components/navigation/Link"
+import Image from "next/image"
+import { absoluteUrl } from "@/lib/utils"
 
-export function BlueBlock({ block }: any) {
+export function RelatedByBadgeBlock({ block }: any) {
   const options = blocksMap(block.block_id)
-
-  if (block.provider === 'block_content') {
-    return (
-      <>
-        {options?.title &&<h2 className="text-xl">{options?.title}</h2>}
-        <div
-          dangerouslySetInnerHTML={{ __html: block.body?.processed }}
-          className="mt-6 text-m leading-loose prose bg-blue-100 rounded-md"
-        />
-      </>
-    )
-  }
 
   if (block.provider === 'views') {
     const rows = block.results;
@@ -29,12 +19,18 @@ export function BlueBlock({ block }: any) {
           {rows.map((row: any, index: number) => (
             <li key={index}>
               <Link href={row.path.alias} className="no-underline hover:text-blue-600">
-                <h3>{row.title}</h3>
+                {row.field_logo && (
+                  <figure>
+                    <Image
+                      src={absoluteUrl(row.field_logo.uri.url)}
+                      width={row.field_logo.resourceIdObjMeta.width}
+                      height={row.field_logo.resourceIdObjMeta.height}
+                      alt={row.field_logo.resourceIdObjMeta.alt || ""}
+                      priority
+                    />
+                  </figure>
+                )}
               </Link>
-              <div
-                dangerouslySetInnerHTML={{ __html: row.body?.processed }}
-                className="mt-6 text-m leading-loose prose bg-blue-100 rounded-md p-4"
-              />
             </li>
           ))}
         </ul>

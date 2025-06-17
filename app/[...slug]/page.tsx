@@ -78,7 +78,7 @@ export default async function NodePage(props: NodePageProps) {
     notFound()
   }
 
-  const blocks = await getBlocks(slug, ['sidebar', 'header', 'footer_top'])
+  const blocks = await getBlocks(slug, ['sidebar_second', 'header', 'footer_top'])
   const menu = await getBlocks('/', ['primary_menu'], ['system'])
 
   type BreadcrumbItem = { text: string; url: string };
@@ -98,8 +98,8 @@ export default async function NodePage(props: NodePageProps) {
 
       <aside className="w-full md:w-1/3 bg-gray-50 p-4 rounded-lg">
       {
-        blocks?.sidebar?.length &&
-        blocks.sidebar.map((block: any) => (
+        blocks?.sidebar_second?.length &&
+        blocks.sidebar_second.map((block: any) => (
           <div key={block?.block_id}>
             <Block block={block} />
           </div>

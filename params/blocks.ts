@@ -1,27 +1,16 @@
 
 export function blocksMap(id?: string) {
   const map = {
-    'articles--block_1': {
+    'organizations--block_2': {
       params: {
-        include: 'field_image,uid',
+        include: 'field_logo',
+        'views-argument': [1, 1],
       },
       next: {
         revalidate: 3600,
       },
-      title: 'Latest articles',
-    },
-    'articles--block_2': {
-      params: {
-        include: 'field_image,uid',
-      },
-      next: {
-        revalidate: 3600,
-      },
-      title: 'Related articles',
-      component: 'BlueBlock',
-    },
-    'homepage': {
-      'title': 'Info',
+      title: 'Related by badge',
+      component: 'RelatedByBadgeBlock',
     }
   } as Record<string, any>;
 

@@ -1,4 +1,4 @@
-import { Article } from "@/components/nodes/Article";
+import { Organization } from "@/components/nodes/Organization";
 import { BasicPage } from "@/components/nodes/BasicPage";
 
 interface NodeProps {
@@ -7,7 +7,7 @@ interface NodeProps {
 
 const componentsMap: Record<string, React.ComponentType<NodeProps>> = {
   "node--page": BasicPage,
-  "node--article": Article,
+  "node--organization": Organization,
 };
 
 export function Node({ node }: NodeProps) {
