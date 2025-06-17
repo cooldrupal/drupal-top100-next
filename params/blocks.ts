@@ -4,7 +4,7 @@ export function blocksMap(id?: string) {
     'organizations--block_2': {
       params: {
         include: 'field_logo',
-        'views-argument': [1, 1],
+        'views-argument': ['***CURRENT_ID', '***CURRENT_ID'],
       },
       next: {
         revalidate: 3600,

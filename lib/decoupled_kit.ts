@@ -133,7 +133,11 @@ async function getBlocksList(path: string | string[], regions: string[], provide
   return null
 }
 
-export async function getBlocks(path: string | string[], regions: string[] = [], providers: string[] = ['block_content', 'views']) {
+export async function getBlocks(path: string | string[],
+  regions: string[] = [],
+  providers: string[] = ['block_content', 'views'],
+  params: Record<string, any> | null = null,
+) {
   const blocksList = await getBlocksList(path, regions, providers)
   if (!blocksList) {
     return null
@@ -154,6 +158,18 @@ export async function getBlocks(path: string | string[], regions: string[] = [],
         else if (block.provider === 'views') {
           const viewId = block.plugin.replace(/^views_block:/, "").replace("-", "--")
           const options = blocksMap(viewId)
+
+          if (params) {
+            if (Array.isArray(options.params['views-argument'])) {
+              options.params['views-argument'] = options.params['views-argument'].map(value => {
+                if (typeof value === 'string' && value.startsWith('***')) {
+                  const key = value.slice(3).toLowerCase();
+                  return params[key as keyof typeof params] ?? value;
+                }
+                return value;
+              });
+            }
+          }
 
           const view = await drupal.getView(viewId, options)
           return {

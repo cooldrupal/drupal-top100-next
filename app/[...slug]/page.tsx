@@ -78,7 +78,9 @@ export default async function NodePage(props: NodePageProps) {
     notFound()
   }
 
-  const blocks = await getBlocks(slug, ['sidebar_second', 'header', 'footer_top'])
+  const blocks = await getBlocks(slug, ['sidebar_second', 'header', 'footer_top'],
+    ['block_content', 'views'], { 'current_id': node.drupal_internal__nid }
+  )
   const menu = await getBlocks('/', ['primary_menu'], ['system'])
 
   type BreadcrumbItem = { text: string; url: string };

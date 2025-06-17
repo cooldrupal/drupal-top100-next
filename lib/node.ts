@@ -3,8 +3,8 @@ import { nodesMap } from "@/params/nodes"
 import { getPathFromSlug } from "@/lib/utils"
 import type { DrupalNode } from "next-drupal"
 
-export async function getNode(slug: string[]) {
-  const path = getPathFromSlug(slug)
+export async function getNode(slug: string | string[]) {
+  const path = typeof slug === 'string' ? slug : getPathFromSlug(slug)
 
   const translatedPath = await drupal.translatePath(path)
   if (!translatedPath) {
