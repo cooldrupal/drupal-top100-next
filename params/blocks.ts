@@ -11,6 +11,29 @@ export function blocksMap(id?: string) {
       },
       title: 'Related by badge',
       component: 'RelatedByBadgeBlock',
+    },
+    'badges--block_1': {
+      params: {
+        include: 'field_logo',
+      },
+      next: {
+        revalidate: 3600,
+      },
+      title: 'Badges',
+      component: 'BadgesBlock',
+    },
+    'organizations--block_1': {
+      params: {
+        include: 'field_logo',
+      },
+      next: {
+        revalidate: 3600,
+      },
+      component: 'PremiumOrganizationsBlock',
+    },
+    'countries--block_1': {
+      title: 'Countries',
+      component: 'CountriesBlock',
     }
   } as Record<string, any>;
 

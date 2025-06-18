@@ -18,8 +18,8 @@ export default async function Home() {
     <Header blocks={blocks?.header} menus={menu?.primary_menu} />
     <main>
       {
-        blocks?.content?.length &&
-        blocks.content.map((block: any) => (
+        blocks?.content_top?.length &&
+        blocks.content_top.map((block: any) => (
           <div key={block?.block_id}>
             <Block block={block} />
           </div>

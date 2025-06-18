@@ -1,6 +1,9 @@
 import { blocksMap } from "@/params/blocks";
 import { Block as DefaultBlock } from "@/components/blocks/Block";
 import { RelatedByBadgeBlock } from "@/components/blocks/RelatedByBadgeBlock";
+import { BadgesBlock } from "@/components/blocks/BadgesBlock";
+import { PremiumOrganizationsBlock } from "@/components/blocks/PremiumOrganizationsBlock";
+import { CountriesBlock } from "@/components/blocks/CountriesBlock";
 
 interface BlockProps {
   block: any;
@@ -8,6 +11,9 @@ interface BlockProps {
 
 const componentsMap: Record<string, React.ComponentType<BlockProps>> = {
   RelatedByBadgeBlock,
+  BadgesBlock,
+  PremiumOrganizationsBlock,
+  CountriesBlock,
 };
 
 export function Block({ block }: BlockProps) {

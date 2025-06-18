@@ -31,10 +31,10 @@ export default async function Careers(props: any) {
   return (
     <>
     <Header blocks={blocks.header} menus={menu?.primary_menu} />
-    <Breadcrumb breadcrumb={breadcrumb} />
     <div className="flex flex-col md:flex-row gap-6">
       <main className="w-full">
-        <h1 className="mb-4 text-6xl font-black leading-tight">{title}</h1>
+        <h1 className="my-4 text-6xl font-black leading-tight text-center">{title}</h1>
+        <Breadcrumb breadcrumb={breadcrumb} />
         {
           view?.results?.length &&
             <ul className="w-full grid grid-cols-1 sm:grid-cols-4 gap-4">

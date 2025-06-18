@@ -92,6 +92,7 @@ export default async function NodePage(props: NodePageProps) {
   return (
     <>
     <Header blocks={blocks?.header} menus={menu?.primary_menu} />
+    <h1 className="mb-4 text-6xl font-black leading-tight text-center">{node.title}</h1>
     <Breadcrumb breadcrumb={breadcrumb} />
     <div className="flex flex-col md:flex-row gap-6">
       <main className="w-full md:w-2/3">

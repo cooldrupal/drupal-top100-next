@@ -10,7 +10,6 @@ interface OrganizationProps {
 export function Organization({ node, ...props }: OrganizationProps) {
   return (
     <article {...props}>
-      <h1 className="mb-4 text-6xl font-black leading-tight">{node.title}</h1>
       {node.field_logo && (
         <figure>
           <Image
