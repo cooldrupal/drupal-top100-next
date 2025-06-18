@@ -4,11 +4,11 @@ import { Footer } from "@/components/drupal/Footer"
 import { getBreadcrumb } from "@/lib/breadcrumb"
 import { Breadcrumb } from "@/components/drupal/Breadcrumb"
 import { getBlocks } from "@/lib/decoupled_kit"
-import { OrganizationTeaser } from "@/components/nodes/OrganizationTeaser"
+import { OrganizationCareer } from "@/components/nodes/OrganizationCareer"
 import type { Metadata } from "next"
 
-const slug = 'organizations'
-const title = 'Organizations'
+const slug = 'careers'
+const title = 'Careers'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -16,11 +16,11 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function Organizations(props: any) {
+export default async function Careers(props: any) {
   const blocks = await getBlocks(slug, ['header', 'footer_top'])
   const menu = await getBlocks('/', ['primary_menu'], ['system'])
 
-  const view = await drupal.getView("organizations--page_1")
+  const view = await drupal.getView("organizations--page_2")
 
   type BreadcrumbItem = { text: string; url: string };
   const breadcrumb = (await getBreadcrumb(slug, 'page_header')) as BreadcrumbItem[] | undefined;
@@ -37,10 +37,10 @@ export default async function Organizations(props: any) {
         <h1 className="mb-4 text-6xl font-black leading-tight">{title}</h1>
         {
           view?.results?.length &&
-            <ul className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <ul className="w-full grid grid-cols-1 sm:grid-cols-4 gap-4">
             {view.results.map((row: any) => (
               <li key={row.id}>
-                <OrganizationTeaser node={row}/>
+                <OrganizationCareer node={row}/>
               </li>
             ))}
             </ul>
