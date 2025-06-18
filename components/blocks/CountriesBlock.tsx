@@ -19,7 +19,7 @@ export function CountriesBlock({ block }: any) {
         <ul className="w-full grid grid-cols-1 sm:grid-cols-4 gap-4">
           {rows.map((row: any, index: number) => (
             <li key={index}>
-              <Link href={row.path.alias} className="no-underline hover:text-blue-600">
+              <Link href={row.path.alias} className="no-underline hover:text-gray-600 text-orange-600" >
                 {row.name}
               </Link>
             </li>

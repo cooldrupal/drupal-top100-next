@@ -36,10 +36,10 @@ export function PremiumOrganizationsBlock({ block }: any) {
                   <div className="relative w-[200px] h-[200px]">
                     <Image
                       src={absoluteUrl(row.field_logo.uri.url)}
+                      alt={row.field_logo.resourceIdObjMeta.alt || row.title}
+                      title={row.field_logo.resourceIdObjMeta.title || row.title}
                       width={200}
                       height={200}
-                      alt={row.field_logo.resourceIdObjMeta.alt || ""}
-                      priority
                     />
                   </div>
                 )}

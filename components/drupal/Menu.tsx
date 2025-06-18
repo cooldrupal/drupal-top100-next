@@ -18,7 +18,6 @@ export async function Menu({menu_id, container_class='', list_class='', item_cla
 
   return (
     <nav className={`menu_${id}`}>
-      <div className={options?.container_class}>
       <ul className={options?.list_class}>
       {menu?.items?.map((item) => {
         return (
@@ -33,7 +32,6 @@ export async function Menu({menu_id, container_class='', list_class='', item_cla
         )
       })}
     </ul>
-    </div>
     </nav>
   )
 }
