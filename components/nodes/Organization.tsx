@@ -35,16 +35,18 @@ export function Organization({ node, ...props }: OrganizationProps) {
       {node.field_partner && (
         <>
         <div>Badge:</div>
-        <div className="relative w-[100px] h-[100px]">
-          <Image
-            src={absoluteUrl(node.field_partner.field_logo.uri.url)}
-            alt={node.field_partner.name}
-            title={node.field_partner.name}
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
+        <Link href={node.field_partner.path.alias}>
+          <div className="relative w-[100px] h-[100px]">
+            <Image
+              src={absoluteUrl(node.field_partner.field_logo.uri.url)}
+              alt={node.field_partner.name}
+              title={node.field_partner.name}
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </Link>
         </>
       )}
       {node.field_countries && (

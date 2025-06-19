@@ -117,7 +117,7 @@ export default async function NodePage(props: NodePageProps) {
           ))}
         </ul>
       ) : (
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-12">
           <main className="w-full md:w-2/3">
             <Node node={node} />
           </main>
