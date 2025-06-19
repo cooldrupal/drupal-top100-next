@@ -6,18 +6,6 @@ import { absoluteUrl } from "@/lib/utils"
 export function PremiumOrganizationsBlock({ block }: any) {
   const options = blocksMap(block.block_id)
 
-  if (block.provider === 'block_content') {
-    return (
-      <div className="mb-6">
-        {options?.title && <h2 className="text-xl">{options.title}</h2>}
-        <div
-          dangerouslySetInnerHTML={{ __html: block.body?.processed }}
-          className="mt-6 text-m leading-loose"
-        />
-      </div>
-    )
-  }
-
   if (block.provider === 'views') {
     const rows = block.results;
     if (!rows || rows.length === 0) {
@@ -33,15 +21,14 @@ export function PremiumOrganizationsBlock({ block }: any) {
             <li key={index}>
               <Link href={row.path.alias} className="no-underline hover:text-blue-600">
                 {row.field_logo && (
-                  <div className="relative w-[200px] h-[200px]">
-                    <Image
-                      src={absoluteUrl(row.field_logo.uri.url)}
-                      alt={row.field_logo.resourceIdObjMeta.alt || row.title}
-                      title={row.field_logo.resourceIdObjMeta.title || row.title}
-                      width={200}
-                      height={200}
-                    />
-                  </div>
+                  <Image
+                  src={absoluteUrl(row.field_logo.uri.url)}
+                  alt={row.field_logo.resourceIdObjMeta.alt || row.title}
+                  title={row.field_logo.resourceIdObjMeta.title || row.title}
+                  width={200}
+                  height={200}
+                  style={{ width: '100%', height: 'auto' }}
+                />
                 )}
               </Link>
             </li>

@@ -14,7 +14,7 @@ export function RelatedByBadgeBlock({ block }: any) {
 
     return (
       <>
-        {options?.title && <h2 className="text-xl">{options?.title}</h2>}
+        {options?.title && <h2 className="text-3xl mb-2">{options?.title}:</h2>}
         <ul>
           {rows.map((row: any, index: number) => (
             <li key={index}>

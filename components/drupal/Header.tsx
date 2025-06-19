@@ -15,6 +15,7 @@ export function Header({ blocks, menus }: any) {
           title={'Home'}
           width={200}
           height={200}
+          style={{ width: '100%', height: 'auto' }}
         />
       </Link>
       </div>
