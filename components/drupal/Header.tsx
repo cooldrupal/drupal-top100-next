@@ -16,6 +16,7 @@ export function Header({ blocks, menus }: any) {
           width={200}
           height={200}
           style={{ width: '100%', height: 'auto' }}
+          priority
         />
       </Link>
       </div>

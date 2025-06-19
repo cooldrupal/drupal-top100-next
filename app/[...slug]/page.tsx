@@ -9,6 +9,7 @@ import { Node, getNodeTypes } from "@/components/drupal/Node"
 import { Header } from "@/components/drupal/Header"
 import { Footer } from "@/components/drupal/Footer"
 import { Breadcrumb } from "@/components/drupal/Breadcrumb"
+import { OrganizationTeaser } from "@/components/nodes/OrganizationTeaser"
 
 export async function generateMetadata(
   props: NodePageProps,
@@ -27,7 +28,7 @@ export async function generateMetadata(
   }
 
   return {
-    title: node.title,
+    title: node.title ?? node.name,
   }
 }
 
@@ -62,7 +63,7 @@ export async function generateStaticParams(): Promise<NodePageParams[]> {
     //   segments: ["blog", "some-category", "a-blog-post"],
     // }
     return {
-      slug: resource.segments,
+      slug: resource.segments
     }
   })
 }
@@ -78,6 +79,17 @@ export default async function NodePage(props: NodePageProps) {
     notFound()
   }
 
+  let view
+  const taxonomies = ['taxonomy_term--partner', 'taxonomy_term--countries']
+  if (taxonomies.includes(node.type)) {
+    const options = {
+      params: {
+        'views-argument': [node.drupal_internal__tid]
+      }
+     }
+    view = await drupal.getView("taxonomy_term--page_1", options)
+  }
+
   const blocks = await getBlocks(slug, ['sidebar_second', 'header', 'footer_top'],
     ['block_content', 'views'], { 'current_id': node.drupal_internal__nid }
   )
@@ -86,30 +98,44 @@ export default async function NodePage(props: NodePageProps) {
   type BreadcrumbItem = { text: string; url: string };
   const breadcrumb = (await getBreadcrumb(slug, 'page_header')) as BreadcrumbItem[] | undefined;
   if (breadcrumb) {
-    breadcrumb.push({ text: node.title, url: '' });
+    breadcrumb.push({ text: node.title ?? node.name, url: '' });
   }
 
   return (
     <>
     <Header blocks={blocks?.header} menus={menu?.primary_menu} />
-    <h1 className="mb-4 text-6xl font-black leading-tight text-center">{node.title}</h1>
+    <h1 className="mb-4 text-6xl font-black leading-tight text-center">{node.title ?? node.name}</h1>
     <Breadcrumb breadcrumb={breadcrumb} />
-    <div className="flex flex-col md:flex-row gap-8">
-      <main className="w-full md:w-2/3">
-        <Node node={node} />
-      </main>
 
-      <aside className="w-full md:w-1/3 bg-gray-50 p-4 rounded-lg">
-      {
-        blocks?.sidebar_second?.length &&
-        blocks.sidebar_second.map((block: any) => (
-          <div key={block?.block_id}>
-            <Block block={block} />
-          </div>
-        ))
-      }
-      </aside>
-    </div>
+    {
+      view && view.results && view.results.length > 0 ? (
+        <ul className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {view.results.map((row: any) => (
+            <li key={row.id}>
+              <OrganizationTeaser node={row} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="flex flex-col md:flex-row gap-8">
+          <main className="w-full md:w-2/3">
+            <Node node={node} />
+          </main>
+
+          <aside className="w-full md:w-1/3 bg-gray-50 p-4 rounded-lg">
+            {
+              blocks?.sidebar_second?.length &&
+              blocks.sidebar_second.map((block: any) => (
+                <div key={block?.block_id}>
+                  <Block block={block} />
+                </div>
+              ))
+            }
+          </aside>
+        </div>
+      )
+    }
+
     <Footer blocks={blocks.footer_top} />
     </>
   );
