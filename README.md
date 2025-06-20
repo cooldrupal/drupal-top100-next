@@ -1,7 +1,6 @@
-# Basic Starter
+# Drupal Top100 project
 
-A simple starter for building your site with Next.js and Drupal (Decoupled Kit module).
-Forked from https://github.com/chapter-three/next-drupal-basic-starter .
+A demo project for building your site with Next.js and Drupal (Decoupled Kit module).
 
 ## How to use
 
