@@ -11,15 +11,24 @@ import { PagerMore } from "@/components/drupal/PagerMore"
 const slug = 'organizations'
 const title = 'Organizations'
 
+type ViewPageParams = {
+  slug: string[]
+}
+
+type ViewPageProps = {
+  params: Promise<ViewPageParams>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: title,
   }
 }
 
-export default async function Organizations({ searchParams }: { searchParams: { [key: string]: string } }) {
-  const resolvedSearchParams = await searchParams
-  const page = parseInt(resolvedSearchParams.page || '0', 10)
+export default async function Organizations(props: ViewPageProps) {
+  const searchParams = await props.searchParams
+  const page = parseInt(searchParams?.page?.toString() || '0', 10);
   const nextPage = page + 1
   const nextPageUrl = `/${slug}?page=${nextPage}`
 
