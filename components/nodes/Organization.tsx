@@ -51,7 +51,7 @@ export function Organization({ node, ...props }: OrganizationProps) {
       )}
       {!isEmpty(node.field_countries) && (
         <>
-          <div className="flex items-center gap-2 mt-2">
+          <div className="flex flex-wrap items-center gap-2 mt-2">
             <div>Countries:</div>
             {node.field_countries.map((country: any) => (
               <span key={country.id}>
@@ -65,7 +65,7 @@ export function Organization({ node, ...props }: OrganizationProps) {
       )}
       {!isEmpty(node.field_website?.uri) && (
         <>
-        <div className="flex items-center gap-2 mt-2">
+          <div className="flex flex-wrap items-center gap-2 mt-2">
           <div>Website:</div>
           <Link href={node.field_website.uri}>
             <span className="mb-2 font-light">{node.field_website.uri}</span>
@@ -75,7 +75,7 @@ export function Organization({ node, ...props }: OrganizationProps) {
       )}
       {!isEmpty(node.field_career?.uri) && (
         <>
-          <div className="flex items-center gap-2 mt-2">
+          <div className="flex flex-wrap items-center gap-2 mt-2">
             <div>Career:</div>
             <Link href={node.field_career.uri}>
               <span className="mb-2 font-light">{node.field_career.uri}</span>
