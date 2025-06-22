@@ -10,7 +10,6 @@ export async function getBreadcrumb(path: string | string[], region: string = 'b
     // Need to install Decoupled breadcrumb module.
     const drupalBase = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL
     const apiUrl = `${drupalBase}/decoupled_kit/breadcrumb?path=${path}`
-    console.log(apiUrl, drupalBase)
 
     let data = null
     try {
