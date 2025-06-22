@@ -37,7 +37,7 @@ export default async function Careers(props: any) {
         <Breadcrumb breadcrumb={breadcrumb} />
         {
           view?.results?.length &&
-            <ul className="w-full grid grid-cols-1 sm:grid-cols-4 gap-4">
+            <ul className="w-full grid grid-cols-2 sm:grid-cols-4 gap-4">
             {view.results.map((row: any) => (
               <li key={row.id}>
                 <OrganizationCareer node={row}/>

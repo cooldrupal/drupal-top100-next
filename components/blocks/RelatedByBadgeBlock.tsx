@@ -17,7 +17,7 @@ export function RelatedByBadgeBlock({ block }: any) {
         {options?.title && <h2 className="text-3xl mb-2">{options?.title}:</h2>}
         <ul>
           {rows.map((row: any, index: number) => (
-            <li key={index}>
+            <li key={index} className="py-2">
               <Link href={row.path.alias} className="no-underline hover:text-blue-600">
                 {row.field_logo && (
                   <figure>

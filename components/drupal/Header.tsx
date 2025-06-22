@@ -6,7 +6,7 @@ import { Link } from "@/components/navigation/Link"
 export function Header({ blocks, menus }: any) {
   return (
     <>
-    <header className="flex items-center justify-between w-full px-4 py-2">
+      <header className="flex flex-wrap items-start w-full px-4 py-2">
       <div className="logo">
       <Link href='/'>
         <Image
