@@ -4,7 +4,7 @@ export function OrganizationTeaser({ node }: any) {
   return (
     <article className="mb-6">
       <Link href={node.path.alias}>
-        <span className="mb-2 text-4xl font-light">{node.title}</span>
+        <span className="mb-2 text-4xl hover:text-orange-600">{node.title}</span>
       </Link>
       {node.field_teaser && (
         <div

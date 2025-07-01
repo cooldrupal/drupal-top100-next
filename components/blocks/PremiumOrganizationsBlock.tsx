@@ -14,7 +14,7 @@ export function PremiumOrganizationsBlock({ block }: any) {
 
     return (
       <>
-        <div className="mb-6">
+        <div className="mb-8">
         {options?.title && <h2 className="text-xl pb-2 mb-2">{options?.title}</h2>}
         <ul className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4">
           {rows.map((row: any, index: number) => (
@@ -34,6 +34,9 @@ export function PremiumOrganizationsBlock({ block }: any) {
             </li>
           ))}
         </ul>
+        </div>
+        <div className="text-right text-xl text-blue-800 hover:text-orange-600">
+          <Link href='/organizations'>All organizations</Link>
         </div>
       </>
     )

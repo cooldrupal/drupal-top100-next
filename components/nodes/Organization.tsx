@@ -9,7 +9,7 @@ interface OrganizationProps {
 
 export function Organization({ node, ...props }: OrganizationProps) {
   return (
-    <article {...props}>
+    <article {...props} className="mb-6">
       {node.field_logo && (
         <figure>
           <Image
@@ -56,7 +56,7 @@ export function Organization({ node, ...props }: OrganizationProps) {
             {node.field_countries.map((country: any) => (
               <span key={country.id}>
                 <Link href={country.path.alias}>
-                  <span className="mb-2 font-light">{country.name}</span>
+                  <span className="mb-2 font-light hover:underline">{country.name}</span>
                 </Link>
               </span>
             ))}
@@ -67,8 +67,8 @@ export function Organization({ node, ...props }: OrganizationProps) {
         <>
           <div className="flex flex-wrap items-center gap-2 mt-2">
           <div>Website:</div>
-          <Link href={node.field_website.uri}>
-            <span className="mb-2 font-light">{node.field_website.uri}</span>
+          <Link href={node.field_website.uri} target="_blank" rel="noopener noreferrer">
+            <span className="mb-2 font-light hover:underline">{node.field_website.uri}</span>
           </Link>
         </div>
         </>
@@ -77,8 +77,8 @@ export function Organization({ node, ...props }: OrganizationProps) {
         <>
           <div className="flex flex-wrap items-center gap-2 mt-2">
             <div>Career:</div>
-            <Link href={node.field_career.uri}>
-              <span className="mb-2 font-light">{node.field_career.uri}</span>
+            <Link href={node.field_career.uri} target="_blank" rel="noopener noreferrer">
+              <span className="mb-2 font-light hover:underline">{node.field_career.uri}</span>
             </Link>
           </div>
         </>

@@ -133,7 +133,8 @@ async function getBlocksList(path: string | string[], regions: string[], provide
   return null
 }
 
-export async function getBlocks(path: string | string[],
+export async function getBlocks(
+  path: string | string[],
   regions: string[] = [],
   providers: string[] = ['block_content', 'views'],
   params: Record<string, any> | null = null,

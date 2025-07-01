@@ -7,28 +7,28 @@ export function Header({ blocks, menus }: any) {
   return (
     <>
       <header className="flex flex-wrap items-start w-full px-4 py-2">
-      <div className="logo">
-      <Link href='/'>
-        <Image
-          src={'/logo.svg'}
-          alt={'Home'}
-          title={'Home'}
-          width={200}
-          height={200}
-          style={{ width: '100%', height: 'auto' }}
-          priority
-        />
-      </Link>
-      </div>
-      {
-        menus?.length &&
-        menus.map((menu: any) => (
-          <Menu
-            key={menu.id}
-            menu_id={menu.id}
-          />
-        ))
-      }
+        <div className="logo">
+          <Link href='/'>
+            <Image
+              src={'/logo.svg'}
+              alt={'Home'}
+              title={'Home'}
+              width={200}
+              height={200}
+              style={{ color: 'transparent', width: '100%', height: 'auto' }}
+              priority
+            />
+          </Link>
+        </div>
+        {
+          menus?.length &&
+          menus.map((menu: any) => (
+            <Menu
+              key={menu.id}
+              menu_id={menu.id}
+            />
+          ))
+        }
     </header>
     <header>
       {
